@@ -1,14 +1,17 @@
-FROM mcr.microsoft.com/devcontainers/python:3.9
+FROM python:3.9-slim
 
-# Install Airflow and ClickHouse dependencies manually
-RUN pip install "apache-airflow==2.7.1" \
-    "apache-airflow-providers-common-sql" \
-    "airflow-clickhouse-plugin" \
-    "clickhouse-driver" \
-    "pandas"
+# Set working directory
+WORKDIR /workspace
 
-# Set environment variables
-ENV AIRFLOW_HOME=/opt/airflow
-ENV AIRFLOW__CORE__LOAD_EXAMPLES=false
+# Install OS dependencies
+RUN apt-get update && apt-get install -y \
+    build-essential \
+    curl \
+    git \
+    default-libmysqlclient-dev \
+    libsasl2-dev \
+    libpq-dev \
+    && rm -rf /var/lib/apt/lists/*
 
-WORKDIR ${AIRFLOW_HOME}
+# Upgrade pip
+RUN pip install --upgrade pip setuptools wheel
