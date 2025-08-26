@@ -1,0 +1,23 @@
+{
+  "name": "Airflow-ClickHouse Environment",
+  "image": "mcr.microsoft.com/devcontainers/python:3.9",  // Or another Python version
+  "features": {
+    "ghcr.io/devcontainers/features/airflow:1": {},
+    "ghcr.io/devcontainers-contrib/features/clickhouse-client:1": {}
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-python.python",
+        "ms-azuretools.vscode-docker",
+        "tabnine.tabnine-vscode"
+      ],
+      "settings": {
+        "python.defaultInterpreterPath": "/usr/local/bin/python"
+      }
+    }
+  },
+  "forwardPorts": [8080],  // For Airflow UI
+  "postCreateCommand": "pip install -r requirements.txt && airflow db init",  // Initialize Airflow DB
+  "postStartCommand": "airflow webserver --port 8080 --daemon && airflow scheduler --daemon"  // Start Airflow services
+}
