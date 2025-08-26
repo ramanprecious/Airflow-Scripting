@@ -2,7 +2,7 @@
   "name": "Airflow-ClickHouse Environment",
   "build": {
     "dockerfile": "Dockerfile"
-  },  // Or another Python version
+  },  
   "customizations": {
   "vscode": {
     "extensions": [
@@ -15,7 +15,6 @@
       }
     }
   },
-  "forwardPorts": [8080],  // For Airflow UI
-  "postCreateCommand": "pip install -r requirements.txt && airflow db init",  // Initialize Airflow DB
-  "postStartCommand": "airflow webserver --port 8080 --daemon && airflow scheduler --daemon"  // Start Airflow services
-}
+  "forwardPorts": [8080], 
+  "postCreateCommand": "pip install -r requirements.txt && airflow db init",
+  "postStartCommand": "airflow db upgrade && airflow scheduler & airflow webserver --port 8080"
