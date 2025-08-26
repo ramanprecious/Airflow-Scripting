@@ -1,0 +1,7 @@
+{
+  "database": "clickhouse",
+  "host": "localhost",
+  "port": 9000,
+  "user": "admin",
+  "password": "mypassword"
+}
