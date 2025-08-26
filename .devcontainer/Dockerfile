@@ -15,3 +15,8 @@ RUN apt-get update && apt-get install -y \
 
 # Upgrade pip
 RUN pip install --upgrade pip setuptools wheel
+
+COPY requirements.txt .
+RUN pip install -r requirements.txt
+
+ENV AIRFLOW_HOME=/workspace/airflow
