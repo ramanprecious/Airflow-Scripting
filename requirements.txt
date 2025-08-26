@@ -1,6 +1,2 @@
-apache-airflow==2.7.1
-apache-airflow-providers-common-sql==1.7.0
-airflow-clickhouse-plugin==0.7.0
-clickhouse-driver==0.2.6
-pandas==2.0.3
-python-dotenv==1.0.0
+apache-airflow==2.9.1
+clickhouse-connect
