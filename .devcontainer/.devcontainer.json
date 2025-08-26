@@ -18,3 +18,4 @@
   "forwardPorts": [8080], 
   "postCreateCommand": "pip install -r requirements.txt && airflow db init",
   "postStartCommand": "airflow db upgrade && airflow scheduler & airflow webserver --port 8080"
+}
